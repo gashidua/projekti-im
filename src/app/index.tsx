@@ -2,15 +2,7 @@ import { useState } from "react";
 import { Button, FlatList, StyleSheet, Text, View } from "react-native";
 import { Link, type Href } from "expo-router";
 import { artikujt } from "@/data/artikujt";
-
-function KomponentiIm() {
-  return (
-    <View style={styles.card}>
-      <Text style={styles.cardTitle}>Komponenti im</Text>
-      <Text>Ky është komponenti im i parë!</Text>
-    </View>
-  );
-}
+import KomponentiIm from "@/components/KomponentiIm";
 
 export default function Index() {
   let numriMeLet = 0;
@@ -74,14 +66,6 @@ const styles = StyleSheet.create({
   container: { padding: 20, paddingBottom: 40, gap: 18 },
   header: { gap: 18 },
   heading: { fontSize: 28, fontWeight: "bold", textAlign: "center" },
-  card: {
-    padding: 18,
-    borderRadius: 12,
-    backgroundColor: "#e0f2fe",
-    alignItems: "center",
-    gap: 6,
-  },
-  cardTitle: { fontSize: 20, fontWeight: "bold" },
   section: { gap: 10 },
   subtitle: { fontSize: 18, fontWeight: "600" },
   note: { color: "#555" },
