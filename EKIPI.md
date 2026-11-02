@@ -1,7 +1,7 @@
 # Ekipi
 
-- **Anëtarët:** [plotësoni emrat e anëtarëve]
-- **Rruga:** [zgjidhni 1, 2 ose 3]
+- **Anëtarët:** Dua Gashi dhe Suela Ahmeti
+- **Rruga:** 1
 - **Ideja:** Aplikacion celular me shpjegime të shkurtra dhe shembuj për temat bazë të React Native, që fillestarët t’i kuptojnë dhe t’i gjejnë lehtë.
 - **Përdoruesi i parë (roli):** Nxënës/student që po mëson React Native për herë të parë.
 
