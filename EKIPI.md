@@ -2,15 +2,15 @@
 
 - **Anëtarët:** Dua Gashi dhe Suela Ahmeti
 - **Rruga:** 1
-- **Ideja:** Aplikacion celular me shpjegime të shkurtra dhe shembuj për temat bazë të React Native, që fillestarët t’i kuptojnë dhe t’i gjejnë lehtë.
-- **Përdoruesi i parë (roli):** Nxënës/student që po mëson React Native për herë të parë.
+- **Ideja:** Aplikacion celular që i ndihmon njerëzit të zbulojnë eventet që zhvillohen në Mitrovicë, si mbrëmje muzikore e teatrale, ceremoni, lojëra dhe ndeshje sportive.
+- **Përdoruesi i parë (roli):** Banor/e i/e Mitrovicës që kërkon aktivitete dhe evente për të marrë pjesë.
 
 ## Pitch-i një-minutësh
 
-- **Kush:** Nxënës/student që po mëson React Native për herë të parë.
-- **Problemi:** Temat bazë si komponentët, `useState`, `FlatList` dhe navigimi janë të vështira për t’u mbajtur mend kur shpjegimet janë të shpërndara.
-- **Dëshmia:** Aplikacioni aktual përmban pesë artikuj mësimorë, por ende nuk kemi shënuar tri biseda me nxënës/studentë. Plotësojeni këtë pjesë me gjetjet reale nga `BISEDAT.md`.
-- **Puna e vetme:** T’i mundësojë fillestarit të gjejë dhe të lexojë shpejt një shpjegim të shkurtër për një koncept të React Native.
-- **Çka na duhet:** Tri biseda me nxënës/studentë që po mësojnë React Native dhe reagime për qartësinë e shpjegimeve.
+- **Kush:** Banorët e Mitrovicës që duan të gjejnë aktivitete për të marrë pjesë.
+- **Problemi:** Informacioni për mbrëmje muzikore e teatrale, ceremoni, lojëra dhe ndeshje sportive mund të jetë i shpërndarë në vende të ndryshme.
+- **Dëshmia:** [Plotësojeni me gjetjet nga tri bisedat reale të shënuara në `BISEDAT.md`].
+- **Puna e vetme:** T’i mundësojë përdoruesit të shohë në një vend eventet e ardhshme në Mitrovicë.
+- **Çka na duhet:** Biseda me banorë dhe organizatorë për të kuptuar ku kërkohet aktualisht ky informacion dhe çfarë hollësish u duhen.
 
 **Prova me zë dhe kronometër:** [shëno kohën e provës 1] · [shëno kohën e provës 2]

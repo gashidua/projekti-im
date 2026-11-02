@@ -2,28 +2,28 @@
 
 ## Puna e vetme e aplikacionit
 
-Aplikacioni i ndihmon fillestarët të gjejnë dhe të lexojnë shpejt një shpjegim të shkurtër për një koncept bazë të React Native.
+Aplikacioni i ndihmon përdoruesit të shohin në një vend eventet e ardhshme që zhvillohen në Mitrovicë.
 
 ## Rrjedha kryesore
 
-1. **Kryefaqe:** përdoruesi sheh listën e temave mësimore.
-2. **Zgjedhja e temës:** përdoruesi prek artikullin që dëshiron të kuptojë.
-3. **Detajet e artikullit:** përdoruesi lexon shpjegimin e temës së zgjedhur.
+1. **Eventet:** përdoruesi sheh eventet e ardhshme në Mitrovicë.
+2. **Kategoritë/filtrat:** përdoruesi zgjedh p.sh. muzikë, teatër, ceremoni ose sport.
+3. **Detajet e eventit:** përdoruesi sheh datën, orën, vendin, kategorinë dhe përshkrimin.
 
 ## MVP
 
 ### Brenda
 
-- Listë e shkurtër temash bazë për React Native.
-- Faqe e veçantë me shpjegimin e secilës temë.
-- Navigim i thjeshtë nga lista te detajet.
+- Listë e eventeve të ardhshme në Mitrovicë.
+- Kategori bazë për muzikë, teatër, ceremoni, lojëra dhe sport.
+- Faqe detajesh me datën, orën, vendin dhe përshkrimin e eventit.
 
 ### Jashtë
 
 - Llogari dhe profile përdoruesish.
+- Blerje biletash dhe pagesa brenda aplikacionit.
 - Komente, biseda ose komunitet.
-- Kuize, pikë dhe renditje.
-- Sinkronizim me server ose përmbajtje të menaxhuar në internet.
+- Rekomandime të personalizuara dhe njoftime të avancuara.
 
 ## Skica
 
