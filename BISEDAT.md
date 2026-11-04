@@ -19,7 +19,7 @@ Mos pyesni: “A do ta përdornit aplikacionin?”
 
 Dialogët më poshtë janë përmbledhje të shënimeve të ekipit, jo citime fjalë për fjalë. Datat dhe hollësitë që nuk u dhanë janë lënë të shënuara si të papërcaktuara.
 
-## Biseda 1 · [plotësoni datën] · person që dëshiron të organizojë aktivitet humanitar
+## Biseda 1 · organizimi i një aktiviteti humanitar
 
 **Intervistuesi:** Çfarë dëshironit të organizonit?
 
@@ -27,7 +27,7 @@ Dialogët më poshtë janë përmbledhje të shënimeve të ekipit, jo citime fj
 
 **Interpretimi i ekipit:** Një listim i eventit me informata të verifikuara mund t’i ndihmojë njerëzit ta zbulojnë.
 
-## Biseda 2 · [plotësoni datën] · person/a i/e interesuar për një mbrëmje muzikore
+## Biseda 2 · mbrëmje muzikore dhe anulimi i mundshëm
 
 **Intervistuesi:** Për cilin event nuk ishit të sigurt?
 
@@ -35,7 +35,7 @@ Dialogët më poshtë janë përmbledhje të shënimeve të ekipit, jo citime fj
 
 **Interpretimi i ekipit:** Aplikacioni mund t’i paraqesë hollësitë e eventit në një vend; informacioni duhet verifikuar me organizatorin.
 
-## Biseda 3 · [plotësoni datën] · person i interesuar për shfaqje teatrale
+## Biseda 3 · kërkimi i informatave për shfaqje teatrale
 
 **Intervistuesi:** Çfarë vështirësie patët kur kërkuat shfaqje?
 
