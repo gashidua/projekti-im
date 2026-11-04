@@ -1,41 +1,49 @@
-This is an Expo/React Native mobile application. Prioritize mobile-first patterns, performance, and cross-platform compatibility.
+# AGENTS.md
 
-## Expo has changed — do not trust your training data
+## Projekti
 
-Expo ships breaking changes every SDK release. APIs you remember are likely renamed, moved, or removed. Before writing any code that touches an Expo, EAS, or React Native API:
+Aplikacion celular për banorët e Mitrovicës që duan t’i zbulojnë eventet e ardhshme në një vend.
 
-1. Read the major version of the `expo` package in `package.json`.
-2. Fetch the matching versioned docs: `https://docs.expo.dev/versions/v<major>.0.0/`
-3. For anything else, fetch https://docs.expo.dev/llms.txt — an index of all Expo docs with corrections to common LLM misconceptions. Follow its links to the specific page you need; never answer from memory.
+## Përdoruesi
 
-## Commands
+Përdoruesi i synuar është banor/e i/e Mitrovicës që kërkon aktivitete dhe evente për të marrë pjesë. `BISEDAT.md` përmban pyetjet dhe shabllonet për tri biseda, por ende nuk ka gjetje reale të plotësuara. Mos shpik citime, përvoja apo nevoja; përditëso këtë seksion vetëm pasi të dokumentohen bisedat reale.
 
-Use `bunx` instead of `npx` if the project uses bun (`bun.lock` present).
+## Ekranet
 
-```bash
-npx expo install <package>  # ALWAYS use instead of npm/yarn/pnpm/bun add — resolves SDK-compatible versions
-npx expo start              # start the dev server
-npx expo lint               # lint
-npx tsc --noEmit            # typecheck
-npx expo-doctor             # diagnose dependency and config issues
-npx expo install --fix      # fix incompatible package versions
-```
+- **Eventet:** listë e eventeve të ardhshme në Mitrovicë.
+- **Kategoritë/filtrat:** zgjedhje sipas muzikës, teatrit, ceremonive, lojërave ose sportit.
+- **Detajet e eventit:** data, ora, vendi, kategoria dhe përshkrimi.
 
-Run lint and typecheck before declaring any task done.
+Këto rrjedhin nga `HARTA.md`. Llogaritë, pagesat/biletat, komentet, bisedat/komuniteti, rekomandimet e personalizuara dhe njoftimet e avancuara janë jashtë MVP-së.
 
-## Navigation & Routing
+## Stack
 
-- Use **Expo Router** for all navigation. Routes live in `src/app/` — every file there is a screen, `_layout.tsx` files define navigators. Keep non-route code (components, hooks, utils) outside `src/app/`.
-- Import `Link`, `router`, and `useLocalSearchParams` from `expo-router`.
-- Docs: https://docs.expo.dev/router/introduction.md
+- Expo SDK 58, React Native, TypeScript
+- Supabase (`supabase-js`)
+- Variablat në `.env`: `EXPO_PUBLIC_SUPABASE_URL` dhe `EXPO_PUBLIC_SUPABASE_ANON_KEY`
+- Kurrë mos vendos `service_role` key në aplikacion ose në GitHub.
+- Mbaje `.env` në `.gitignore` dhe mos lexo, shfaq apo ndrysho sekretet.
 
-## Building with EAS
+## Rregullat për agjentin
 
-Use EAS to build, sign, and submit the app in the cloud (`eas build`, `eas submit`) and to ship over-the-air updates (`eas update`) — no local Xcode or Android Studio required. Run EAS CLI as `bunx eas-cli <command>` in Bun projects, or `npx eas-cli@latest <command>` otherwise; substitute that for bare `eas` in docs examples.
-Docs: https://docs.expo.dev/eas/index.md
+- Puno me hapa të vegjël: bëj vetëm një ndryshim në një kohë.
+- Para çdo ndryshimi, shpjego shkurt çfarë do të ndryshosh dhe pse.
+- Pyet para se të instalosh paketa.
+- Mos prek `.env` ose sekrete.
+- Pas një hapi që punon, bëj commit.
+- Teksti i UI-së duhet të jetë në shqip.
+- Për navigimin përdor Expo Router dhe mbaji ekranet në `src/app/`; komponentët dhe logjika e përbashkët jashtë `src/app/`.
+- Para ndryshimeve në Expo/React Native, kontrollo versionin Expo dhe lexo dokumentacionin përkatës SDK 58: `https://docs.expo.dev/versions/v58.0.0/`.
 
-## Rules
+## Statusi
 
-- If `ios/` and `android/` directories do not exist, they are generated (Continuous Native Generation). Never create or edit them by hand — configure native behavior in `app.json` and config plugins.
-- Expo Go only includes its bundled native modules. After adding a library with native code, the app needs a development build: `npx expo run:ios|android` locally, or `eas build --profile development`.
-- Prefer recommended Expo modules over third-party libraries, and check your available skills before adding dependencies. Docs: https://docs.expo.dev/versions/latest/index.md
+- **Punon tani:** asgjë ende.
+- **Misioni tjetër:** M1 — leximi i eventeve nga Supabase.
+
+## Prompti i parë · shqip
+
+> Jam student. Aplikacioni im është Expo SDK 58 (React Native + TypeScript) dhe po e lidh me Supabase. Produkti: aplikacion për banorët e Mitrovicës që duan t’i zbulojnë eventet e ardhshme në një vend. Ekrani im kryesor nga `HARTA.md`: Eventet. Punojmë me hapa të vegjël: bëj NJË ndryshim, shpjegoma në 3 fjali çka ndryshove dhe pse, dhe më thuaj si ta provoj në telefon. Mos ndrysho asgjë tjetër. Çelësat: vetëm publishable/anon key nga `.env` (`EXPO_PUBLIC_SUPABASE_URL`, `EXPO_PUBLIC_SUPABASE_ANON_KEY`), kurrë `service_role`; `.env` qëndron në `.gitignore`.
+
+## First prompt · English
+
+> I am a student. My app is Expo SDK 58 (React Native + TypeScript), and I am connecting it to Supabase. Product: an app for Mitrovica residents to discover upcoming events in one place. My main screen from `HARTA.md`: Events. We work in small steps: make ONE change, explain what you changed and why in 3 sentences, and tell me how to test it on my phone. Change nothing else. Keys: only the publishable/anon key from `.env` (`EXPO_PUBLIC_SUPABASE_URL`, `EXPO_PUBLIC_SUPABASE_ANON_KEY`), never `service_role`; `.env` stays in `.gitignore`.
