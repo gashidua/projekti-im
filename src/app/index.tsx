@@ -2,7 +2,9 @@ import { useCallback, useEffect, useState } from "react";
 import {
   ActivityIndicator,
   FlatList,
+  KeyboardAvoidingView,
   Pressable,
+  Platform,
   RefreshControl,
   ScrollView,
   StyleSheet,
@@ -140,13 +142,18 @@ export default function Index() {
   };
 
   return (
-    <FlatList
-      contentContainerStyle={styles.content}
-      data={visibleEvents}
-      keyExtractor={(event) => String(event.id)}
-      refreshControl={
-        <RefreshControl refreshing={refreshing} onRefresh={refresh} />
-      }
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.screen}
+    >
+      <FlatList
+        contentContainerStyle={styles.content}
+        data={visibleEvents}
+        keyboardShouldPersistTaps="handled"
+        keyExtractor={(event) => String(event.id)}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={refresh} />
+        }
       ListEmptyComponent={
         <View style={styles.stateCard}>
           {loading ? (
@@ -342,11 +349,13 @@ export default function Index() {
           </Pressable>
         </View>
       }
-    />
+      />
+    </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
+  screen: { flex: 1 },
   content: { flexGrow: 1, padding: 20, paddingBottom: 36, backgroundColor: "#f8fafc" },
   header: { gap: 8, paddingTop: 24, paddingBottom: 20 },
   eyebrow: { color: "#2563eb", fontSize: 12, fontWeight: "800", letterSpacing: 1.5 },
