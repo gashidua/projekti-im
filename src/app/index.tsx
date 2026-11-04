@@ -6,9 +6,12 @@ import {
   RefreshControl,
   StyleSheet,
   Text,
+  TextInput,
   View,
 } from "react-native";
 import { supabase, supabaseConfigError } from "@/lib/supabase";
+
+type EventCategory = "Muzikë" | "Teatër" | "Ceremoni" | "Lojëra" | "Sport";
 
 type Event = {
   id: number;
@@ -16,15 +19,37 @@ type Event = {
   data: string;
   ora: string;
   vendi: string;
-  kategoria: string;
+  kategoria: EventCategory;
   pershkrimi: string;
 };
+
+type EventDraft = Omit<Event, "id">;
+
+const categories: EventCategory[] = [
+  "Muzikë",
+  "Teatër",
+  "Ceremoni",
+  "Lojëra",
+  "Sport",
+];
+
+const emptyDraft = (): EventDraft => ({
+  titulli: "",
+  data: "",
+  ora: "",
+  vendi: "",
+  kategoria: "Muzikë",
+  pershkrimi: "",
+});
 
 export default function Index() {
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [draft, setDraft] = useState<EventDraft>(emptyDraft);
+  const [saving, setSaving] = useState(false);
+  const [formMessage, setFormMessage] = useState<string | null>(null);
 
   const loadEvents = useCallback(async () => {
     if (!supabase) {
@@ -36,20 +61,29 @@ export default function Index() {
     }
 
     setError(null);
-    const { data, error: queryError } = await supabase
-      .from("eventet")
-      .select("id, titulli, data, ora, vendi, kategoria, pershkrimi")
-      .order("data", { ascending: true });
+    try {
+      const { data, error: queryError } = await supabase
+        .from("eventet")
+        .select("id, titulli, data, ora, vendi, kategoria, pershkrimi")
+        .order("data", { ascending: true });
 
-    if (queryError) {
-      setError(queryError.message);
+      if (queryError) {
+        setError(`Gabim nga Supabase: ${queryError.message}`);
+        setEvents([]);
+      } else {
+        setEvents(data ?? []);
+      }
+    } catch (queryError) {
+      setError(
+        queryError instanceof Error
+          ? `Gabim gjatë leximit: ${queryError.message}`
+          : "Ndodhi një gabim gjatë leximit të eventeve.",
+      );
       setEvents([]);
-    } else {
-      setEvents(data ?? []);
+    } finally {
+      setLoading(false);
+      setRefreshing(false);
     }
-
-    setLoading(false);
-    setRefreshing(false);
   }, []);
 
   useEffect(() => {
@@ -60,6 +94,55 @@ export default function Index() {
     setRefreshing(true);
     void loadEvents();
   }, [loadEvents]);
+
+  const saveEvent = async () => {
+    setFormMessage(null);
+
+    if (!supabase) {
+      setFormMessage(supabaseConfigError);
+      return;
+    }
+
+    const event = {
+      ...draft,
+      titulli: draft.titulli.trim(),
+      vendi: draft.vendi.trim(),
+      pershkrimi: draft.pershkrimi.trim(),
+    };
+
+    if (
+      !event.titulli ||
+      !event.vendi ||
+      !event.pershkrimi ||
+      !/^\d{4}-\d{2}-\d{2}$/.test(event.data) ||
+      !/^\d{2}:\d{2}$/.test(event.ora)
+    ) {
+      setFormMessage("Plotëso të gjitha fushat. Datën shkruaje VVVV-MM-DD dhe orën OO:MM.");
+      return;
+    }
+
+    setSaving(true);
+    try {
+      const { error: insertError } = await supabase.from("eventet").insert(event);
+
+      if (insertError) {
+        setFormMessage(`Nuk u ruajt eventi: ${insertError.message}`);
+        return;
+      }
+
+      setDraft(emptyDraft());
+      setFormMessage("Eventi u ruajt.");
+      void loadEvents();
+    } catch (insertError) {
+      setFormMessage(
+        insertError instanceof Error
+          ? `Gabim gjatë ruajtjes: ${insertError.message}`
+          : "Ndodhi një gabim gjatë ruajtjes së eventit.",
+      );
+    } finally {
+      setSaving(false);
+    }
+  };
 
   return (
     <FlatList
@@ -121,6 +204,89 @@ export default function Index() {
         </View>
       )}
       ItemSeparatorComponent={() => <View style={styles.separator} />}
+      ListFooterComponent={
+        <View style={styles.form}>
+          <Text style={styles.formTitle}>Shto event</Text>
+          <Text style={styles.formHint}>
+            Për demonstrim. Publikimi i eventeve duhet të kontrollohet para përdorimit real.
+          </Text>
+          <TextInput
+            accessibilityLabel="Titulli i eventit"
+            onChangeText={(value) => setDraft((current) => ({ ...current, titulli: value }))}
+            placeholder="Titulli i eventit"
+            style={styles.input}
+            value={draft.titulli}
+          />
+          <View style={styles.formRow}>
+            <TextInput
+              accessibilityLabel="Data e eventit"
+              onChangeText={(value) => setDraft((current) => ({ ...current, data: value }))}
+              placeholder="Data: VVVV-MM-DD"
+              style={[styles.input, styles.halfInput]}
+              value={draft.data}
+            />
+            <TextInput
+              accessibilityLabel="Ora e eventit"
+              onChangeText={(value) => setDraft((current) => ({ ...current, ora: value }))}
+              placeholder="Ora: OO:MM"
+              style={[styles.input, styles.halfInput]}
+              value={draft.ora}
+            />
+          </View>
+          <TextInput
+            accessibilityLabel="Vendi i eventit"
+            onChangeText={(value) => setDraft((current) => ({ ...current, vendi: value }))}
+            placeholder="Vendi"
+            style={styles.input}
+            value={draft.vendi}
+          />
+          <Text style={styles.fieldLabel}>Kategoria</Text>
+          <View style={styles.categories}>
+            {categories.map((category) => (
+              <Pressable
+                accessibilityRole="button"
+                accessibilityState={{ selected: draft.kategoria === category }}
+                key={category}
+                onPress={() => setDraft((current) => ({ ...current, kategoria: category }))}
+                style={[
+                  styles.categoryOption,
+                  draft.kategoria === category && styles.selectedCategory,
+                ]}
+              >
+                <Text
+                  style={[
+                    styles.categoryOptionText,
+                    draft.kategoria === category && styles.selectedCategoryText,
+                  ]}
+                >
+                  {category}
+                </Text>
+              </Pressable>
+            ))}
+          </View>
+          <TextInput
+            accessibilityLabel="Përshkrimi i eventit"
+            multiline
+            onChangeText={(value) => setDraft((current) => ({ ...current, pershkrimi: value }))}
+            placeholder="Përshkrimi"
+            style={[styles.input, styles.descriptionInput]}
+            value={draft.pershkrimi}
+          />
+          {formMessage ? (
+            <Text accessibilityLiveRegion="polite" style={styles.formMessage}>
+              {formMessage}
+            </Text>
+          ) : null}
+          <Pressable
+            accessibilityRole="button"
+            disabled={saving}
+            onPress={() => void saveEvent()}
+            style={[styles.saveButton, saving && styles.disabledButton]}
+          >
+            <Text style={styles.saveText}>{saving ? "Duke ruajtur…" : "Ruaj eventin"}</Text>
+          </Pressable>
+        </View>
+      }
     />
   );
 }
@@ -144,4 +310,21 @@ const styles = StyleSheet.create({
   stateMessage: { color: "#475569", fontSize: 14, lineHeight: 20, textAlign: "center" },
   retryButton: { paddingHorizontal: 18, paddingVertical: 11, borderRadius: 10, backgroundColor: "#1d4ed8" },
   retryText: { color: "#fff", fontSize: 14, fontWeight: "700" },
+  form: { gap: 12, marginTop: 24, padding: 18, borderRadius: 16, backgroundColor: "#fff", borderWidth: 1, borderColor: "#e2e8f0" },
+  formTitle: { color: "#0f172a", fontSize: 21, fontWeight: "800" },
+  formHint: { color: "#64748b", fontSize: 13, lineHeight: 19 },
+  input: { minHeight: 48, paddingHorizontal: 13, paddingVertical: 11, borderRadius: 10, borderWidth: 1, borderColor: "#cbd5e1", color: "#0f172a", backgroundColor: "#fff", fontSize: 15 },
+  formRow: { flexDirection: "row", gap: 10 },
+  halfInput: { flex: 1, minWidth: 0 },
+  fieldLabel: { color: "#334155", fontSize: 14, fontWeight: "700" },
+  categories: { flexDirection: "row", flexWrap: "wrap", gap: 8 },
+  categoryOption: { paddingHorizontal: 12, paddingVertical: 9, borderRadius: 999, backgroundColor: "#f1f5f9" },
+  selectedCategory: { backgroundColor: "#1d4ed8" },
+  categoryOptionText: { color: "#334155", fontSize: 13, fontWeight: "600" },
+  selectedCategoryText: { color: "#fff" },
+  descriptionInput: { minHeight: 88, textAlignVertical: "top" },
+  formMessage: { color: "#b91c1c", fontSize: 14, lineHeight: 20 },
+  saveButton: { alignItems: "center", paddingVertical: 14, borderRadius: 10, backgroundColor: "#1d4ed8" },
+  disabledButton: { opacity: 0.6 },
+  saveText: { color: "#fff", fontSize: 15, fontWeight: "700" },
 });
