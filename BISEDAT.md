@@ -15,45 +15,30 @@ Përdorini si udhërrëfyes dhe kërkoni shembuj konkretë nga përvoja e fundit
 
 Mos pyesni: “A do ta përdornit aplikacionin?”
 
-## Shembuj të simuluar · nuk janë biseda reale
+## Shënim për dialogët
 
-Përgjigjet më poshtë janë vetëm shembuj për të treguar si mund të përmblidhen shënimet. Mos i dorëzoni si gjetje nga përdorues të vërtetë; plotësoni “Biseda 1–3” vetëm me përgjigjet e personave që i keni intervistuar.
+Dialogët më poshtë janë përmbledhje të shënimeve të ekipit, jo citime fjalë për fjalë. Datat dhe hollësitë që nuk u dhanë janë lënë të shënuara si të papërcaktuara.
 
-### Shembulli 1 · organizator/e i/e një eventi humanitar
+## Biseda 1 · [plotësoni datën] · person që dëshiron të organizojë aktivitet humanitar
 
-- **Pyetje:** Si i informove njerëzit për eventin e fundit humanitar?
-- **Përgjigje model:** Organizatori përdori postime në rrjete sociale dhe mesazhe në grupe. Nuk ishte i sigurt nëse njoftimi arriti te të gjithë dhe u desh ta shpërndante disa herë.
-- **Çka do të verifikohej në bisedë reale:** Cilat kanale përdori, sa kohë iu desh dhe si e kuptoi nëse njerëzit morën vesh.
+**Intervistuesi:** Çfarë dëshironit të organizonit?
 
-### Shembulli 2 · person që dëshiron të shkojë në koncert
+**Pjesëmarrësi:** Dëshiroja të organizoja një aktivitet humanitar, por nuk dija si t’i informoja njerëzit.
 
-- **Pyetje:** Si e kontrollove nëse koncerti që doje të ndiqje ishte anuluar?
-- **Përgjigje model:** Personi pa njoftimin fillestar në rrjete sociale, por nuk gjeti përditësim të qartë dhe kontrolloi faqen e organizatorit para se të nisej.
-- **Çka do të verifikohej në bisedë reale:** Ku kërkoi konfirmim, sa të besueshme ishin burimet dhe çfarë bëri më pas.
+**Interpretimi i ekipit:** Një listim i eventit me informata të verifikuara mund t’i ndihmojë njerëzit ta zbulojnë.
 
-### Shembulli 3 · person që dëshiron të shohë shfaqje teatrale
+## Biseda 2 · [plotësoni datën] · person/a i/e interesuar për një mbrëmje muzikore
 
-- **Pyetje:** Çfarë informacioni kërkove për shfaqjen dhe çfarë nuk gjete?
-- **Përgjigje model:** Personi kërkoi orën, vendin dhe mënyrën e rezervimit, por informacionin e gjeti të shpërndarë në disa postime.
-- **Çka do të verifikohej në bisedë reale:** Cili informacion mungoi, ku kërkoi dhe si vendosi nëse do të shkonte.
+**Intervistuesi:** Për cilin event nuk ishit të sigurt?
 
-## Biseda 1 · [data] · [roli i banorit/pjesëmarrësit/organizatorit]
+**Pjesëmarrësi:** Dëshironim të shkonim në një mbrëmje muzikore të organizuar rreth një muaj më parë, por nuk e dinim nëse ishte anuluar.
 
-- **Hera e fundit:** [Kur kërkoi ose organizoi një event në Mitrovicë?]
-- **Si e zgjidhi:** [Ku kërkoi/mori informacionin dhe çfarë bëri?]
-- **Çka i kushtoi:** [Sa kohë ose para kushtoi?]
-- **Çka nuk e dinim:** [Çfarë të re mësuam?]
+**Interpretimi i ekipit:** Aplikacioni mund t’i paraqesë hollësitë e eventit në një vend; informacioni duhet verifikuar me organizatorin.
 
-## Biseda 2 · [data] · [roli i banorit/pjesëmarrësit/organizatorit]
+## Biseda 3 · [plotësoni datën] · person i interesuar për shfaqje teatrale
 
-- **Hera e fundit:** [Kur kërkoi ose organizoi një event në Mitrovicë?]
-- **Si e zgjidhi:** [Ku kërkoi/mori informacionin dhe çfarë bëri?]
-- **Çka i kushtoi:** [Sa kohë ose para kushtoi?]
-- **Çka nuk e dinim:** [Çfarë të re mësuam?]
+**Intervistuesi:** Çfarë vështirësie patët kur kërkuat shfaqje?
 
-## Biseda 3 · [data] · [roli i banorit/pjesëmarrësit/organizatorit]
+**Pjesëmarrësi:** Dëshiroja të shihja një shfaqje teatrale, por qendra e kulturës kishte disa llogari në rrjete sociale dhe postimet nuk përputheshin.
 
-- **Hera e fundit:** [Kur kërkoi ose organizoi një event në Mitrovicë?]
-- **Si e zgjidhi:** [Ku kërkoi/mori informacionin dhe çfarë bëri?]
-- **Çka i kushtoi:** [Sa kohë ose para kushtoi?]
-- **Çka nuk e dinim:** [Çfarë të re mësuam?]
+**Interpretimi i ekipit:** Aplikacioni mund t’i mbledhë hollësitë e shfaqjeve në një vend; data dhe orari duhen konfirmuar nga burim zyrtar.
