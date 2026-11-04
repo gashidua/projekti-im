@@ -264,6 +264,7 @@ export default function Index() {
             accessibilityLabel="Titulli i eventit"
             onChangeText={(value) => setDraft((current) => ({ ...current, titulli: value }))}
             placeholder="Titulli i eventit"
+            placeholderTextColor="#475569"
             style={styles.input}
             value={draft.titulli}
           />
@@ -272,6 +273,7 @@ export default function Index() {
               accessibilityLabel="Data e eventit"
               onChangeText={(value) => setDraft((current) => ({ ...current, data: value }))}
               placeholder="Data: VVVV-MM-DD"
+              placeholderTextColor="#475569"
               style={[styles.input, styles.halfInput]}
               value={draft.data}
             />
@@ -279,6 +281,7 @@ export default function Index() {
               accessibilityLabel="Ora e eventit"
               onChangeText={(value) => setDraft((current) => ({ ...current, ora: value }))}
               placeholder="Ora: OO:MM"
+              placeholderTextColor="#475569"
               style={[styles.input, styles.halfInput]}
               value={draft.ora}
             />
@@ -287,6 +290,7 @@ export default function Index() {
             accessibilityLabel="Vendi i eventit"
             onChangeText={(value) => setDraft((current) => ({ ...current, vendi: value }))}
             placeholder="Vendi"
+            placeholderTextColor="#475569"
             style={styles.input}
             value={draft.vendi}
           />
@@ -319,6 +323,7 @@ export default function Index() {
             multiline
             onChangeText={(value) => setDraft((current) => ({ ...current, pershkrimi: value }))}
             placeholder="Përshkrimi"
+            placeholderTextColor="#475569"
             style={[styles.input, styles.descriptionInput]}
             value={draft.pershkrimi}
           />
