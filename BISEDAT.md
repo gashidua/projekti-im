@@ -15,6 +15,14 @@ Përdorini si udhërrëfyes dhe kërkoni shembuj konkretë nga përvoja e fundit
 
 Mos pyesni: “A do ta përdornit aplikacionin?”
 
+## Skenarë për t'u verifikuar · nuk janë biseda të kryera
+
+Këto janë ide për të gjetur persona që mund të intervistohen. Mos i paraqitni si gjetje derisa të bëhet biseda dhe të shënohen përgjigjet reale.
+
+1. **Organizator/e i/e një eventi humanitar:** Si i informoi njerëzit për eventin e fundit? Cilat kanale përdori dhe a pati vështirësi që lajmi të arrinte te publiku?
+2. **Pjesëmarrës/e në koncert:** Si e kontrolloi nëse koncerti i fundit që planifikoi të ndiqte ishte anuluar apo ende mbahej? Ku kërkoi njoftimin dhe a ishte i qartë?
+3. **Spektator/e i/e teatrit:** Çfarë informacioni i duhej për shfaqjen e fundit që deshi të ndiqte? Ku e kërkoi dhe çfarë nuk arriti të gjente?
+
 ## Biseda 1 · [data] · [roli i banorit/pjesëmarrësit/organizatorit]
 
 - **Hera e fundit:** [Kur kërkoi ose organizoi një event në Mitrovicë?]
