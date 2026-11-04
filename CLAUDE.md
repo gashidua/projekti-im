@@ -37,8 +37,9 @@ Këto rrjedhin nga `HARTA.md`. Llogaritë, pagesat/biletat, komentet, bisedat/ko
 
 ## Statusi
 
-- **Punon tani:** asgjë ende.
-- **Misioni tjetër:** M1 — leximi i eventeve nga Supabase.
+- **Gati në kod:** M1 (lexim), M2 (shtim demonstrues) dhe M3 (ekrani kryesor, filtra, detaje).
+- **Ende pa u verifikuar:** lidhja reale me Supabase dhe përdorimi në telefon; `.env` mungon dhe `supabase/setup.sql` nuk është ekzekutuar.
+- **Hapi tjetër:** plotëso `.env` lokalisht dhe provo M1 në telefon; për M2, ekzekuto politikën demonstrative vetëm nëse pranon shkrimin publik anonim.
 
 ## Prompti i parë · shqip
 
