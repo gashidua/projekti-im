@@ -2,7 +2,7 @@
 
 ## Çka punon
 
-M1–M3 janë implementuar në kod: ekrani lexon eventet, filtron sipas kategorisë, hap detajet dhe ka formë për shtim. Nuk janë verifikuar në telefon ose kundër Supabase reale: `.env` mungon dhe SQL-ja ende nuk është ekzekutuar.
+M1 është verifikuar në telefon sipas konfirmimit të përdoruesit: `.env` është vendosur, `supabase/setup.sql` është ekzekutuar dhe eventet shembull shfaqen. Screenshot-i për dorëzim është ruajtur. M2 dhe M3 janë implementuar në kod, por shtimi publik demonstrues nuk është aktivizuar.
 
 ## Çka bëri agjenti
 
@@ -12,8 +12,8 @@ M1–M3 janë implementuar në kod: ekrani lexon eventet, filtron sipas kategori
 
 ## Çka mësuam / çka nuk e kuptuam
 
-Të dhënat reale mund të lexohen nga Supabase pasi të vendosen kredencialet lokalisht dhe të krijohet tabela. Ende nuk e dimë nëse projekti Supabase është konfiguruar saktë, sepse lidhja nuk është testuar; insert-i publik do t’i lejonte çdo përdoruesi të aplikacionit të shtojë evente.
+Lidhja reale me Supabase dhe leximi i eventeve u konfirmuan në telefon. Insert-i demonstrues do t’i lejonte çdo përdoruesi me publishable key të shtojë evente, prandaj politika e tij nuk është aktivizuar.
 
 ## Hapi tjetër
 
-Kopjo `.env.example` në `.env`, vendos URL-në dhe anon key pa i dërguar në chat, ekzekuto `supabase/setup.sql` në SQL Editor dhe provo listën në telefon. Për M2, shqyrto veçmas `supabase/enable_demo_insert.sql`; mos e përdor në prodhim pa autentikim ose moderim. Pastaj ruaj screenshot-in e telefonit për dorëzim.
+M1 është gati për dorëzim. Nëse kërkohet edhe M2/M3, provo filtrat dhe detajet në telefon; për insert-in përdor `supabase/enable_demo_insert.sql` vetëm për demonstrim, jo në prodhim pa autentikim ose moderim.

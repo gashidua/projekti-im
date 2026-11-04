@@ -37,9 +37,9 @@ Këto rrjedhin nga `HARTA.md`. Llogaritë, pagesat/biletat, komentet, bisedat/ko
 
 ## Statusi
 
-- **Gati në kod:** M1 (lexim), M2 (shtim demonstrues) dhe M3 (ekrani kryesor, filtra, detaje).
-- **Ende pa u verifikuar:** lidhja reale me Supabase dhe përdorimi në telefon; `.env` mungon dhe `supabase/setup.sql` nuk është ekzekutuar.
-- **Hapi tjetër:** plotëso `.env` lokalisht dhe provo M1 në telefon; për M2, ekzekuto politikën demonstrative vetëm nëse pranon shkrimin publik anonim.
+- **M1:** gati në kod dhe i provuar në telefon sipas konfirmimit të përdoruesit; `.env`, SQL-ja bazë dhe screenshot-i janë përfunduar.
+- **M2/M3:** funksionet janë në kod; insert-i publik demonstrues nuk është aktivizuar. Testo filtrat, detajet dhe shtimin veçmas nëse kërkohen për misionin e zgjedhur.
+- **Kujdes:** `supabase/enable_demo_insert.sql` lejon shkrim anonim publik dhe është vetëm për demonstrim.
 
 ## Prompti i parë · shqip
 
