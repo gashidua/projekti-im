@@ -21,10 +21,22 @@ create policy "Eventet mund të lexohen publikisht"
   to anon
   using (true);
 
+delete from public.eventet
+where titulli in (
+  'Shembull i sajuar 1',
+  'Shembull i sajuar 2',
+  'Shembull i sajuar 3',
+  'Shembull i sajuar 4'
+);
+
 insert into public.eventet (titulli, data, ora, vendi, kategoria, pershkrimi)
 values
-  ('Shembull i sajuar 1', current_date + 10, '18:00', 'Qendra e qytetit', 'Muzikë', 'Event shembull për testim.'),
-  ('Shembull i sajuar 2', current_date + 14, '19:30', 'Salla e kulturës', 'Teatër', 'Event shembull për testim.'),
-  ('Shembull i sajuar 3', current_date + 18, '17:00', 'Sheshi i qytetit', 'Ceremoni', 'Event shembull për testim.'),
-  ('Shembull i sajuar 4', current_date + 21, '20:00', 'Palestra e qytetit', 'Sport', 'Event shembull për testim.')
-on conflict (titulli) do nothing;
+  ('Shfaqje teatrale: Rrugët e Qytetit', '2026-12-12', '19:00', 'Teatri Muharrem Qena', 'Teatër', 'Të dhëna demonstrimi për projektin; data dhe programi nuk janë njoftim zyrtar.'),
+  ('Trepça vs Peja – Basketboll', '2026-12-19', '20:00', 'Palestra Minatori', 'Sport', 'Ndeshje e vendosur për demonstrim; kontrollo kalendarin zyrtar para se të shkosh.'),
+  ('Festivali i Fëmijëve', '2026-12-05', '11:00', 'Salla e një shkolle në Mitrovicë', 'Lojëra', 'Të dhëna demonstrimi; shkolla dhe organizimi duhet të konfirmohen.')
+on conflict (titulli) do update set
+  data = excluded.data,
+  ora = excluded.ora,
+  vendi = excluded.vendi,
+  kategoria = excluded.kategoria,
+  pershkrimi = excluded.pershkrimi;
