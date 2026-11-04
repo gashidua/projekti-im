@@ -4,34 +4,17 @@ import {
   FlatList,
   Pressable,
   RefreshControl,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
   View,
 } from "react-native";
+import { Link, type Href } from "expo-router";
 import { supabase, supabaseConfigError } from "@/lib/supabase";
-
-type EventCategory = "Muzikë" | "Teatër" | "Ceremoni" | "Lojëra" | "Sport";
-
-type Event = {
-  id: number;
-  titulli: string;
-  data: string;
-  ora: string;
-  vendi: string;
-  kategoria: EventCategory;
-  pershkrimi: string;
-};
+import { eventCategories, type Event, type EventCategory } from "@/types/event";
 
 type EventDraft = Omit<Event, "id">;
-
-const categories: EventCategory[] = [
-  "Muzikë",
-  "Teatër",
-  "Ceremoni",
-  "Lojëra",
-  "Sport",
-];
 
 const emptyDraft = (): EventDraft => ({
   titulli: "",
@@ -50,6 +33,7 @@ export default function Index() {
   const [draft, setDraft] = useState<EventDraft>(emptyDraft);
   const [saving, setSaving] = useState(false);
   const [formMessage, setFormMessage] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<EventCategory | null>(null);
 
   const loadEvents = useCallback(async () => {
     if (!supabase) {
@@ -62,9 +46,16 @@ export default function Index() {
 
     setError(null);
     try {
+      const now = new Date();
+      const today = [
+        now.getFullYear(),
+        String(now.getMonth() + 1).padStart(2, "0"),
+        String(now.getDate()).padStart(2, "0"),
+      ].join("-");
       const { data, error: queryError } = await supabase
         .from("eventet")
         .select("id, titulli, data, ora, vendi, kategoria, pershkrimi")
+        .gte("data", today)
         .order("data", { ascending: true });
 
       if (queryError) {
@@ -94,6 +85,10 @@ export default function Index() {
     setRefreshing(true);
     void loadEvents();
   }, [loadEvents]);
+
+  const visibleEvents = selectedCategory
+    ? events.filter((event) => event.kategoria === selectedCategory)
+    : events;
 
   const saveEvent = async () => {
     setFormMessage(null);
@@ -147,7 +142,7 @@ export default function Index() {
   return (
     <FlatList
       contentContainerStyle={styles.content}
-      data={events}
+      data={visibleEvents}
       keyExtractor={(event) => String(event.id)}
       refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={refresh} />
@@ -168,9 +163,13 @@ export default function Index() {
             </>
           ) : (
             <>
-              <Text style={styles.stateTitle}>Ende s’ka evente</Text>
+              <Text style={styles.stateTitle}>
+                {events.length > 0 ? "S’ka evente në këtë kategori" : "Ende s’ka evente"}
+              </Text>
               <Text style={styles.stateMessage}>
-                Eventet e ardhshme do të shfaqen këtu.
+                {events.length > 0
+                  ? "Zgjidh një kategori tjetër ose shiko të gjitha eventet."
+                  : "Eventet e ardhshme do të shfaqen këtu."}
               </Text>
             </>
           )}
@@ -183,25 +182,76 @@ export default function Index() {
           <Text style={styles.subtitle}>
             Gjej muzikë, teatër, ceremoni, lojëra dhe sport në qytet.
           </Text>
+          <Text style={styles.fieldLabel}>Filtro sipas kategorisë</Text>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            <View style={styles.categories}>
+              <Pressable
+                accessibilityRole="button"
+                accessibilityState={{ selected: selectedCategory === null }}
+                onPress={() => setSelectedCategory(null)}
+                style={[
+                  styles.categoryOption,
+                  selectedCategory === null && styles.selectedCategory,
+                ]}
+              >
+                <Text
+                  style={[
+                    styles.categoryOptionText,
+                    selectedCategory === null && styles.selectedCategoryText,
+                  ]}
+                >
+                  Të gjitha
+                </Text>
+              </Pressable>
+              {eventCategories.map((category) => (
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityState={{ selected: selectedCategory === category }}
+                  key={category}
+                  onPress={() => setSelectedCategory(category)}
+                  style={[
+                    styles.categoryOption,
+                    selectedCategory === category && styles.selectedCategory,
+                  ]}
+                >
+                  <Text
+                    style={[
+                      styles.categoryOptionText,
+                      selectedCategory === category && styles.selectedCategoryText,
+                    ]}
+                  >
+                    {category}
+                  </Text>
+                </Pressable>
+              ))}
+            </View>
+          </ScrollView>
         </View>
       }
       renderItem={({ item }) => (
-        <View style={styles.card}>
-          <View style={styles.cardTop}>
-            <Text style={styles.category}>{item.kategoria}</Text>
-            <Text style={styles.date}>
-              {new Date(`${item.data}T00:00:00`).toLocaleDateString("sq-XK", {
-                day: "numeric",
-                month: "long",
-              })}
+        <Link href={`/event/${item.id}` as Href} asChild>
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={`Shiko detajet e ${item.titulli}`}
+            style={styles.card}
+          >
+            <View style={styles.cardTop}>
+              <Text style={styles.category}>{item.kategoria}</Text>
+              <Text style={styles.date}>
+                {new Date(`${item.data}T00:00:00`).toLocaleDateString("sq-XK", {
+                  day: "numeric",
+                  month: "long",
+                })}
+              </Text>
+            </View>
+            <Text style={styles.eventTitle}>{item.titulli}</Text>
+            <Text style={styles.meta}>
+              {item.ora.slice(0, 5)} · {item.vendi}
             </Text>
-          </View>
-          <Text style={styles.eventTitle}>{item.titulli}</Text>
-          <Text style={styles.meta}>
-            {item.ora.slice(0, 5)} · {item.vendi}
-          </Text>
-          <Text style={styles.description}>{item.pershkrimi}</Text>
-        </View>
+            <Text style={styles.description}>{item.pershkrimi}</Text>
+            <Text style={styles.detailsLink}>Shiko detajet ›</Text>
+          </Pressable>
+        </Link>
       )}
       ItemSeparatorComponent={() => <View style={styles.separator} />}
       ListFooterComponent={
@@ -242,7 +292,7 @@ export default function Index() {
           />
           <Text style={styles.fieldLabel}>Kategoria</Text>
           <View style={styles.categories}>
-            {categories.map((category) => (
+            {eventCategories.map((category) => (
               <Pressable
                 accessibilityRole="button"
                 accessibilityState={{ selected: draft.kategoria === category }}
@@ -322,6 +372,7 @@ const styles = StyleSheet.create({
   selectedCategory: { backgroundColor: "#1d4ed8" },
   categoryOptionText: { color: "#334155", fontSize: 13, fontWeight: "600" },
   selectedCategoryText: { color: "#fff" },
+  detailsLink: { color: "#1d4ed8", fontSize: 14, fontWeight: "700", marginTop: 2 },
   descriptionInput: { minHeight: 88, textAlignVertical: "top" },
   formMessage: { color: "#b91c1c", fontSize: 14, lineHeight: 20 },
   saveButton: { alignItems: "center", paddingVertical: 14, borderRadius: 10, backgroundColor: "#1d4ed8" },
