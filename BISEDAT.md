@@ -15,13 +15,27 @@ Përdorini si udhërrëfyes dhe kërkoni shembuj konkretë nga përvoja e fundit
 
 Mos pyesni: “A do ta përdornit aplikacionin?”
 
-## Skenarë për t'u verifikuar · nuk janë biseda të kryera
+## Shembuj të simuluar · nuk janë biseda reale
 
-Këto janë ide për të gjetur persona që mund të intervistohen. Mos i paraqitni si gjetje derisa të bëhet biseda dhe të shënohen përgjigjet reale.
+Përgjigjet më poshtë janë vetëm shembuj për të treguar si mund të përmblidhen shënimet. Mos i dorëzoni si gjetje nga përdorues të vërtetë; plotësoni “Biseda 1–3” vetëm me përgjigjet e personave që i keni intervistuar.
 
-1. **Organizator/e i/e një eventi humanitar:** Si i informoi njerëzit për eventin e fundit? Cilat kanale përdori dhe a pati vështirësi që lajmi të arrinte te publiku?
-2. **Pjesëmarrës/e në koncert:** Si e kontrolloi nëse koncerti i fundit që planifikoi të ndiqte ishte anuluar apo ende mbahej? Ku kërkoi njoftimin dhe a ishte i qartë?
-3. **Spektator/e i/e teatrit:** Çfarë informacioni i duhej për shfaqjen e fundit që deshi të ndiqte? Ku e kërkoi dhe çfarë nuk arriti të gjente?
+### Shembulli 1 · organizator/e i/e një eventi humanitar
+
+- **Pyetje:** Si i informove njerëzit për eventin e fundit humanitar?
+- **Përgjigje model:** Organizatori përdori postime në rrjete sociale dhe mesazhe në grupe. Nuk ishte i sigurt nëse njoftimi arriti te të gjithë dhe u desh ta shpërndante disa herë.
+- **Çka do të verifikohej në bisedë reale:** Cilat kanale përdori, sa kohë iu desh dhe si e kuptoi nëse njerëzit morën vesh.
+
+### Shembulli 2 · person që dëshiron të shkojë në koncert
+
+- **Pyetje:** Si e kontrollove nëse koncerti që doje të ndiqje ishte anuluar?
+- **Përgjigje model:** Personi pa njoftimin fillestar në rrjete sociale, por nuk gjeti përditësim të qartë dhe kontrolloi faqen e organizatorit para se të nisej.
+- **Çka do të verifikohej në bisedë reale:** Ku kërkoi konfirmim, sa të besueshme ishin burimet dhe çfarë bëri më pas.
+
+### Shembulli 3 · person që dëshiron të shohë shfaqje teatrale
+
+- **Pyetje:** Çfarë informacioni kërkove për shfaqjen dhe çfarë nuk gjete?
+- **Përgjigje model:** Personi kërkoi orën, vendin dhe mënyrën e rezervimit, por informacionin e gjeti të shpërndarë në disa postime.
+- **Çka do të verifikohej në bisedë reale:** Cili informacion mungoi, ku kërkoi dhe si vendosi nëse do të shkonte.
 
 ## Biseda 1 · [data] · [roli i banorit/pjesëmarrësit/organizatorit]
 
