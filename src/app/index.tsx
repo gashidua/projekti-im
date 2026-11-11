@@ -186,6 +186,9 @@ export default function Index() {
         <View style={styles.header}>
           <Text style={styles.eyebrow}>MITROVICË</Text>
           <Text style={styles.title}>Eventet e ardhshme</Text>
+          <Link href="/hyrja" style={styles.detailsLink}>
+            Hyr në llogari / Llogaria ime
+          </Link>
           <Text style={styles.subtitle}>
             Gjej muzikë, teatër, ceremoni, lojëra dhe sport në qytet.
           </Text>
@@ -265,7 +268,7 @@ export default function Index() {
         <View style={styles.form}>
           <Text style={styles.formTitle}>Shto event</Text>
           <Text style={styles.formHint}>
-            Për demonstrim. Publikimi i eventeve duhet të kontrollohet para përdorimit real.
+            Hyr në llogari para se të shtosh një event.
           </Text>
           <TextInput
             accessibilityLabel="Titulli i eventit"
